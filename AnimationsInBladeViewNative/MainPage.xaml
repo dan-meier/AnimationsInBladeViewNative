@@ -1,0 +1,84 @@
+﻿<Page
+    x:Class="AnimationsInBladeViewNative.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:custom="using:AnimationsInBladeViewNative.Custom"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Content>
+
+        <Grid>
+            <TextBlock
+                FontSize="40"
+                FontWeight="Bold"
+                HorizontalAlignment="Center"
+                Margin="0,40,0,0"
+                Text="Native Animation Example"
+                VerticalAlignment="Top"/>
+
+
+
+            <!--A stack with a button to show the BladeView AND a user control with native animations
+                to show that native animations work just fine outside the BladeView.-->
+            <StackPanel
+                HorizontalAlignment="Center"
+                Spacing="30"
+                VerticalAlignment="Center">
+
+                <Button
+                    x:Name="ShowButton"
+                    Content="o--- Show Blade"
+                    Tapped="ShowButton_OnTapped"/>
+
+                <custom:SimpleAnimation
+                    x:Name="PageControl"/>
+
+            </StackPanel>
+
+
+
+            <!--A BladeView control with a single blade containing the same user control with native animations.
+                The native animations work fine within the BladeView/BladeItem.-->
+            <controls:BladeView
+                x:Name="ImplicitAnimationsBladeView"
+                BladeMode="Normal"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Visibility="Collapsed">
+
+
+                <controls:BladeItem
+                    x:Name="ImplicitAnimationsBladeItem"
+                    Header="Configurations"
+                    IsOpen="False"
+                    VerticalAlignment="Stretch"
+                    Width="400">
+
+                    <StackPanel
+                        HorizontalAlignment="Center"
+                        Spacing="30"
+                        VerticalAlignment="Center">
+
+                        <Button
+                            x:Name="HideButton"
+                            Content="Hide Blade ---o"
+                            Tapped="HideButton_OnTapped"/>
+
+                        <custom:SimpleAnimation
+                            x:Name="BladeControl"/>
+
+                    </StackPanel>
+
+                </controls:BladeItem>
+
+            </controls:BladeView>
+
+        </Grid>
+
+    </Page.Content>
+
+</Page>
