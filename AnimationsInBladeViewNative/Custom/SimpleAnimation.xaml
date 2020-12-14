@@ -20,7 +20,6 @@
             <StackPanel.Resources>
 
                 <Storyboard x:Name="ElementTranslationStoryboard">
-
                     <DoubleAnimation
                         Storyboard.TargetName="ElementTranslation"
                         Storyboard.TargetProperty="Y"
@@ -31,18 +30,14 @@
                             <CircleEase EasingMode="EaseOut" />
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
+                </Storyboard>
 
-                    <DoubleAnimation
-                        Storyboard.TargetName="Element"
-                        Storyboard.TargetProperty="Opacity"
-                        Duration="0:0:1"
-                        From="0"
-                        To="1">
-                        <DoubleAnimation.EasingFunction>
-                            <CircleEase EasingMode="EaseOut"/>
-                        </DoubleAnimation.EasingFunction>
-                    </DoubleAnimation>
+                <Storyboard x:Name="FadeInStoryboard">
+                    <FadeInThemeAnimation Storyboard.TargetName="Element" Duration="0:0:1"/>
+                </Storyboard>
 
+                <Storyboard x:Name="FadeOutStoryboard">
+                    <FadeOutThemeAnimation Storyboard.TargetName="Element" Duration="0:0:1"/>
                 </Storyboard>
 
             </StackPanel.Resources>
@@ -54,7 +49,6 @@
                 Fill="Red"
                 Height="100"
                 HorizontalAlignment="Center"
-                Opacity="0"
                 Width="100">
                 <Rectangle.RenderTransform>
                     <TranslateTransform x:Name="ElementTranslation"/>
@@ -63,7 +57,7 @@
 
             <Button
                 x:Name="AnimateButton"
-                Content="Fly In"
+                Content="Fly Out"
                 HorizontalAlignment="Center"
                 Margin="0,10,0,0"
                 Tapped="AnimateButton_OnTapped"/>
